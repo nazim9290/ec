@@ -44,7 +44,7 @@ public class UserService {
 	}
 
 
-	public UserEntity getUserEntityByName(String email) {
+	public UserEntity getUserEntityByEmail(String email) {
 		return userMapper.getUserEntityByEmail(email);
 	}
 

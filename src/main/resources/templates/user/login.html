@@ -9,17 +9,17 @@
 
 	<section>
 		<div class="container my-5">
-			<form>
+			<form method="post" th:action="@{/user/doLogin}" th:object="${loginDao}">
 				<h2 class="form-signin-heading py-2">ログイン画面</h2>
 				<!-- Email input -->
 				<div class="form-outline mb-4">
-					<input type="email" id="form1Example1" class="form-control" /> <label
+					<input type="email" id="form1Example1" name="user_email" th:field="*{user_email}" class="form-control" /> <label
 						class="form-label" for="form1Example1">Email address</label>
 				</div>
 
 				<!-- Password input -->
 				<div class="form-outline mb-4">
-					<input type="password" id="form1Example2" class="form-control" />
+					<input type="password" id="form1Example2" name="user_password" th:field="*{user_password}" class="form-control" />
 					<label class="form-label" for="form1Example2">Password</label>
 				</div>
 
