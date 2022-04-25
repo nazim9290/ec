@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+
+
+
+<html lang="ja" xmlns:th="http://www.thymeleaf.org"
+	th:replace="base::layout(~{::section})">
+<head>
+<meta charset="UTF-8" />
+<title th:text="${title}"></title>
+</head>
+<body>
+
+	<section
+		class="banner d-flex justify-content-center align-items-center">
+		<div class="container my-3">
+			<div class="row row-cols-1 row-cols-md-4 g-4">
+				<div class="col" th:each="product :${productList}">
+					<div class="card h-100">
+					
+						<img th:src="${product.getImage}" class="card-img-top" alt="...">
+						<div class="card-body">
+							<h5 class="card-title" th:text="${product.getProduct_name}"></h5>
+							<p class="card-text" th:text="${product.getProduct_description}"></p>
+							<div><h4 th:text="${product.getPrice+' \'}"></h4></div>
+							<h6 th:text="${product.getMaker_id}"></h6>
+						</div>
+						<a th:href="@{'/product/details/' + ${product.product_id}}" class="btn btn-primary">もっと見る</a>
+						
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	
+	
+	
+
+</body>
+</html>

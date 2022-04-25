@@ -1,0 +1,77 @@
+create database ecommerce;
+use ecommerce;
+create table user(
+    user_id int NOT NULL AUTO_INCREMENT,
+    user_name varchar(50) NOT NULL,
+    user_email varchar(50),
+    user_password varchar(50),
+    user_image varchar(256) ,
+    user_role boolean default false,
+    mobail varchar(15),
+    address varchar(50),
+    create_time TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    update_time TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    PRIMARY KEY(user_id)
+);
+
+create table category(
+ category_id int NOT NULL AUTO_INCREMENT,
+ category_name varchar(50) NOT NULL unique,
+ create_time TIMESTAMP DEFAULT CURRENT_TIMESTAMP, 
+ update_time TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+ PRIMARY KEY(category_id)
+);
+
+create table maker(
+ maker_id int NOT NULL AUTO_INCREMENT,
+ maker_name varchar(50) NOT NULL unique,
+ create_time TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+ update_time TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+ PRIMARY KEY(maker_id)
+);
+
+create table product(
+    product_id int NOT NULL AUTO_INCREMENT,
+    product_name varchar(50) NOT NULL,
+    product_description varchar(256),
+    price int ,
+    stock int ,
+    image varchar(256),
+    category_id int,
+    maker_id int,
+    create_time TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    update_time TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    PRIMARY KEY(product_id),
+    FOREIGN KEY (category_id) REFERENCES category(category_id),
+	FOREIGN KEY (maker_id) REFERENCES maker(maker_id)
+);
+
+
+
+create table orders(
+    order_id int NOT NULL AUTO_INCREMENT,
+    user_id int,
+    product_id int,
+    quantity int ,
+    totla_price int ,
+    address varchar(256),
+    create_time TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    update_time TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    PRIMARY KEY (order_id),
+    FOREIGN KEY (user_id) REFERENCES user(user_id),
+	FOREIGN KEY (product_id) REFERENCES product(product_id)
+);
+create table cart(
+    cart_id int NOT NULL AUTO_INCREMENT,
+    user_id int,
+    product_id int,
+    quantity int ,
+    totla_price int ,
+    create_time TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    update_time TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    PRIMARY KEY (cart_id),
+    FOREIGN KEY (user_id) REFERENCES user(user_id),
+	FOREIGN KEY (product_id) REFERENCES product(product_id)
+);
+
+
