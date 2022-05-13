@@ -14,24 +14,47 @@
 		class="banner d-flex justify-content-center align-items-center">
 		<div class="container my-3">
 			<div class="row row-cols-1 row-cols-md-4 g-4">
+				<div class="col-sm-3">
+					<h4>カテゴリ</h4>
+					<ul class="list-group">
+						<a href="" th:each="category, iStat : ${categoryList}"
+							th:href="@{/product/category/{id}(id=${category.category_id})}"><li
+							class="list-group-item" th:text="${category.category_name}"></li></a>
+
+					</ul>
+				</div>
 				<div class="col" th:each="product :${productList}">
 					<div class="card h-100">
 
-						<img th:src="${product.getImage}" class="card-img-top" alt="...">
+						<img th:src="@{${'/productImages/' + product.image}}"
+							class="card-img-top" alt="...">
 						<div class="card-body">
 							<h5 class="card-title" th:text="${product.getProduct_name}"></h5>
 							<p class="card-text" th:text="${product.getProduct_description}"></p>
 							<div>
 								<h4 th:text="${product.getPrice+' \'}"></h4>
 							</div>
-							<h6 th:text="${product.getMaker_id}"></h6>
+							<h6 th:text="${product.getMaker_name}"></h6>
+							<h6 th:text="${'Stock '+product.getStock}"></h6>
 						</div>
+						<a class="nav-link active"
+						style="color: indigo; font-weight: 700" aria-current="page"
+						th:if="${session?.loginUser?.user_role}=='admin'"
+						th:href="@{/admin/products/update/{id}(id=${product.product_id})}">編集</a>
 						<div
 							class="cart-button px-2 pb-2 d-flex justify-content-between align-items-center">
-							<button class="btn btn-dark text-uppercase"><a th:href="@{'/cart/' + ${product.product_id}}">カートに入れ</a></button>
+							
+							<form th:action="@{/addToCart}" method="post">
+							<input type="hidden" th:value="${product.product_id}" name="product_id" />
+							<input type="hidden" th:value="1" name="quantity" />
+							<button type="submit" class="btn btn-info"
+							>カートに入れ</button>
+							</form>
+							
+
 							<div class="add">
-								<span class="product_fav"><i class="fa fa-heart-o"></i></span> <span
-									class="product_fav"><i class="fa fa-opencart"></i></span>
+								<a th:href="@{'/product/details/' + ${product.product_id}}"
+									class="btn btn-primary">もっと見る</a>
 							</div>
 						</div>
 					</div>

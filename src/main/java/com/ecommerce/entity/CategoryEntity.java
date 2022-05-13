@@ -7,6 +7,7 @@ public class CategoryEntity {
 	private String category_name;
 	private Timestamp create_time;
 	private Timestamp update_time;
+
 	public int getCategory_id() {
 		return category_id;
 	}

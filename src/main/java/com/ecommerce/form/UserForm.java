@@ -8,7 +8,7 @@ public class UserForm {
 	private String user_email;
 	private String user_password;
 	private String user_image;
-	private boolean user_role;
+	private String user_role;
 	private String mobail;
 	private String address;
 	private Timestamp create_time;
@@ -54,11 +54,11 @@ public class UserForm {
 		this.user_image = user_image;
 	}
 
-	public boolean isUser_role() {
+	public String getUser_role() {
 		return user_role;
 	}
 
-	public void setUser_role(boolean user_role) {
+	public void setUser_role(String user_role) {
 		this.user_role = user_role;
 	}
 

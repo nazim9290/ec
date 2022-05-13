@@ -8,7 +8,7 @@ public class UserEntity {
 	private String user_email;
 	private String user_password;
 	private String user_image;
-	private boolean user_role;
+	private String user_role;
 	private String mobail;
 	private String address;
 	private Timestamp create_time;
@@ -45,12 +45,7 @@ public class UserEntity {
 	public void setUser_image(String user_image) {
 		this.user_image = user_image;
 	}
-	public boolean isUser_role() {
-		return user_role;
-	}
-	public void setUser_role(boolean user_role) {
-		this.user_role = user_role;
-	}
+
 	public String getMobail() {
 		return mobail;
 	}
@@ -76,6 +71,13 @@ public class UserEntity {
 		this.update_time = update_time;
 	}
 	
+	public String getUser_role() {
+		return user_role;
+	}
+
+	public void setUser_role(String user_role) {
+		this.user_role = user_role;
+	}
 	
 	
 	

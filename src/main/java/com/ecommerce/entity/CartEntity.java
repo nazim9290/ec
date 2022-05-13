@@ -7,8 +7,8 @@ public class CartEntity {
 	private int cart_id;
 	private int user_id;
 	private int product_id;
-	private int total_price;
-	private int quantity;
+	private int quantity = 1;
+	private int total;
 	private Timestamp create_time;
 	private Timestamp update_time;
 	public int getCart_id() {
@@ -29,12 +29,6 @@ public class CartEntity {
 	public void setProduct_id(int product_id) {
 		this.product_id = product_id;
 	}
-	public int getTotal_price() {
-		return total_price;
-	}
-	public void setTotal_price(int total_price) {
-		this.total_price = total_price;
-	}
 	public int getQuantity() {
 		return quantity;
 	}
@@ -53,6 +47,15 @@ public class CartEntity {
 	public void setUpdate_time(Timestamp update_time) {
 		this.update_time = update_time;
 	}
+
+	public int getTotal() {
+		return total;
+	}
+
+	public void setTotal(int total) {
+		this.total = total;
+	}
 	
 	
+
 }

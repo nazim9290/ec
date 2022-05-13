@@ -5,7 +5,7 @@ import java.sql.Timestamp;
 public class MakerEntity {
 
 	private int maker_id;
-	private int maker_name;
+	private String maker_name;
 	private Timestamp create_time;
 	private Timestamp update_time;
 	public int getMaker_id() {
@@ -14,10 +14,12 @@ public class MakerEntity {
 	public void setMaker_id(int maker_id) {
 		this.maker_id = maker_id;
 	}
-	public int getMaker_name() {
+
+	public String getMaker_name() {
 		return maker_name;
 	}
-	public void setMaker_name(int maker_name) {
+
+	public void setMaker_name(String maker_name) {
 		this.maker_name = maker_name;
 	}
 	public Timestamp getCreate_time() {

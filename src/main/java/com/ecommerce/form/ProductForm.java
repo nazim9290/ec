@@ -95,4 +95,5 @@ public class ProductForm {
 		this.update_time = update_time;
 	}
 
+
 }

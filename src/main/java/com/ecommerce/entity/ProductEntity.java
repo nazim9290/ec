@@ -11,7 +11,7 @@ public class ProductEntity {
 	private int stock;
 	private String image;
 
-	private CategoryEntity categoryEntity;
+	private int category_id;
 
 	private int maker_id;
 	private Timestamp create_time;
@@ -54,12 +54,6 @@ public class ProductEntity {
 		this.image = image;
 	}
 
-//	public int getCategory_id() {
-//		return category_id;
-//	}
-//	public void setCategory_id(int category_id) {
-//		this.category_id = category_id;
-//	}
 	public int getMaker_id() {
 		return maker_id;
 	}
@@ -79,13 +73,14 @@ public class ProductEntity {
 		this.update_time = update_time;
 	}
 
-	public CategoryEntity getCategoryEntity() {
-		return categoryEntity;
+	public int getCategory_id() {
+		return category_id;
 	}
 
-	public void setCategoryEntity(CategoryEntity categoryEntity) {
-		this.categoryEntity = categoryEntity;
+	public void setCategory_id(int category_id) {
+		this.category_id = category_id;
 	}
+
 	
 	
 	

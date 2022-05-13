@@ -43,25 +43,33 @@ public class UserService {
 		return userMapper.getUserByName(username);
 	}
 
-
-	public UserEntity getUserEntityByEmail(String email) {
+	public UserEntity getUserByEmail(String email) {
 		return userMapper.getUserEntityByEmail(email);
 	}
 
 	// ユーザー登録
 	public void insertUser(UserForm userForm) {
-		// password を暗号化する
-//		userForm.setPassword(bcryptEncoder.encode(userForm.getPassword()));
 
-		userMapper.insert(userForm);
+		System.out.println(userForm.getUser_email());
+
+		UserEntity user = new UserEntity();
+		user.setUser_name(userForm.getUser_name());
+		user.setUser_email(userForm.getUser_email());
+		user.setUser_password(userForm.getUser_password());
+		user.setUser_image(userForm.getUser_image());
+		user.setUser_role(userForm.getUser_role());
+		user.setMobail(userForm.getMobail());
+		user.setAddress(userForm.getAddress());
+
+		userMapper.insert(user);
+		System.out.println("data inserted");
 	}
 
 	// ユーザー更新
 
-
 	// ユーザー削除
-	public void deleteUser(String id) {
-		userMapper.delete(Integer.parseInt(id));
+	public void removeUserById(int id) {
+		userMapper.delete(id);
 	}
 
 }

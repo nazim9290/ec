@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+
+
+
+<html lang="ja" xmlns:th="http://www.thymeleaf.org"
+	th:replace="base::layout(~{::section})">
+<head>
+<meta charset="UTF-8" />
+<title th:text="${title}"></title>
+</head>
+<body>
+
+	<section style="height:90vh">
+		<div class="container">
+
+			<a th:href="@{/admin/categories/add}" style="margin: 20px 0"
+				class="btn btn-primary">カテゴリ登録</a>
+			<table class="table">
+				<thead class="thead-light">
+					<tr>
+						<th scope="col">SN</th>
+						<th scope="col">カテゴリ名前</th>
+						<th scope="col">削除</th>
+						<th scope="col">更新</th>
+					</tr>
+				</thead>
+				<tbody>
+
+					<tr th:each="category, iStat : ${categories}">
+						<th scope="row" th:text="${iStat.index + 1}">1</th>
+						<td th:text="${category.category_name}">Larry</td>
+
+						<td><a href=""
+							th:href="@{/admin/categories/delete/{id}(id=${category.category_id})}"
+							class="btn btn-danger">削除</a></td>
+						<td><a href=""
+							th:href="@{/admin/categories/update/{id}(id=${category.category_id})}"
+							class="btn btn-warning">更新</a></td>
+
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</section>
+
+
+
+
+</body>
+</html>

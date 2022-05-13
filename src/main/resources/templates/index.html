@@ -22,7 +22,7 @@
 							<h5 class="card-title" th:text="${product.getProduct_name}"></h5>
 							<p class="card-text" th:text="${product.getProduct_description}"></p>
 							<div><h4 th:text="${product.getPrice+' \'}"></h4></div>
-							<h6 th:text="${product.getMaker_id}"></h6>
+							<h6 th:text="${product.getMaker_name}"></h6>
 						</div>
 						<a th:href="@{'/product/details/' + ${product.product_id}}" class="btn btn-primary">もっと見る</a>
 						

@@ -9,7 +9,6 @@ import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
 
 import com.ecommerce.entity.UserEntity;
-import com.ecommerce.form.UserForm;
 
 @Mapper
 public interface UserMapper {
@@ -29,16 +28,18 @@ public interface UserMapper {
 	@Select("select * from user where user_email=#{email}")
 	UserEntity getUserEntityByEmail(String email);
 
+
 	// insert
-	@Insert("insert into user (id, name, sex,password,created_time,update_time) values (#{id},#{name},#{sex},#{password},now(),now())")
-	void insert(UserForm userForm);
+	@Insert("insert into user ( user_name,user_email,user_password,user_image,user_role,mobail,address,create_time,update_time) "
+			+ "values (#{user_name},#{user_email},#{user_password},#{user_image},#{user_role},#{mobail},#{address},now(),now())")
+	void insert(UserEntity user);
 
 	// update
-	@Update("update user set id = #{id}, name = #{name}, sex = #{sex}, password = #{password} where id = #{id}")
+	@Update("update user set id = #{id}, name = #{name}, sex = #{sex}, password = #{password} where user_id = #{id}")
 	void update(UserEntity user);
 
 	// delete
-	@Delete("delete from user where id = #{id}")
+	@Delete("delete from user where user_id = #{id}")
 	void delete(Integer id);
 
 }

@@ -1,4 +1,7 @@
-<!doctype html>
+<!DOCTYPE html>
+
+
+
 <html lang="ja" xmlns:th="http://www.thymeleaf.org"
 	th:replace="base::layout(~{::section})">
 <head>
@@ -7,12 +10,46 @@
 </head>
 <body>
 
-	<section>
-		<div class="container">
-		
-			<h1>Product Details page</h1>
-
+	<section style="height: 80vh">
+		<div class="container mt-5">
+			<div class="row">
+				<div class="col-sm-5 d-flex justify-content-center">
+					<img class="mt-5" height="300px" width="300px" src=""
+						th:src="@{${'/productImages/' + product.image}}" alt="">
+				</div>
+				<div class="col-sm-7 mt-5">
+					<h2 th:text="${product.product_name}"></h2>
+					<p th:text="${product.category_name}"></p>
+					<h2>
+						\ <span id="price" th:text="${product.price}"></span>
+						<input type="hidden" id="product_price" th:value="${product.price}" />
+					</h2>
+					
+					<p th:text="${product.product_description}"></p>
+					<form th:action="@{/addToCart}" method="post">
+					<div class="row gx-5">
+					<div class=" col input-group" role="group"
+						aria-label="Basic outlined example">
+						<button type="button" class="btn btn-primary dec">-</button>
+						
+						<input type="hidden" th:value="${product.product_id}" name="product_id" />
+						<input type="number" class="form-control qty"
+							aria-label="Input group example" aria-describedby="btnGroupAddon"
+							min="1"
+							value="1"
+							name="quantity"
+							>
+						<button type="button" class="btn btn-primary inc">+</button>
+						
+					</div>
+					<button type="submit"
+						class="col btn btn-primary ms-5">Add to cart</button>
+					</div>
+					</form> 
+				</div>
+			</div>
 		</div>
 	</section>
+
 </body>
 </html>

@@ -6,6 +6,8 @@ import javax.servlet.http.HttpServletResponse;
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.ecommerce.entity.UserEntity;
+
 public class LoginInterceptor implements HandlerInterceptor {
 
 	@Override
@@ -19,6 +21,20 @@ public class LoginInterceptor implements HandlerInterceptor {
 			response.sendRedirect("/user/login");
 			return false;
 		} else {
+			
+			UserEntity userEntity = (UserEntity) loginUser;
+
+			StringBuilder requestURL = new StringBuilder(request.getRequestURL().toString());
+
+			if (requestURL.indexOf("admin") != -1) {
+				if (userEntity.getUser_role().equals("admin")) {
+					return true;
+				} else {
+					response.sendRedirect("/product");
+					return false;
+				}
+			}
+			
 			return true;
 		}
 	}

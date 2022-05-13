@@ -5,10 +5,11 @@ import java.sql.Timestamp;
 public class OrderEntity {
 	private int order_id;
 	private int user_id;
-	private int product_id;
-	private int quantity;
-	private int totla_price;
+	private String status;
+	private String name;
 	private String address;
+	private String mobailNo;
+	private String email;
 	private Timestamp create_time;
 	private Timestamp update_time;
 
@@ -24,36 +25,32 @@ public class OrderEntity {
 		return user_id;
 	}
 
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public String getMobailNo() {
+		return mobailNo;
+	}
+
+	public void setMobailNo(String mobailNo) {
+		this.mobailNo = mobailNo;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
 	public void setUser_id(int user_id) {
 		this.user_id = user_id;
-	}
-
-	public int getProduct_id() {
-		return product_id;
-	}
-
-	public void setProduct_id(int product_id) {
-		this.product_id = product_id;
-	}
-
-	public int getQuantity() {
-		return quantity;
-	}
-
-	public void setQuantity(int quantity) {
-		this.quantity = quantity;
-	}
-
-	public int getTotla_price() {
-		return totla_price;
-	}
-
-	public void setTotla_price(int totla_price) {
-		this.totla_price = totla_price;
-	}
-
-	public String getAddress() {
-		return address;
 	}
 
 	public void setAddress(String address) {
@@ -75,5 +72,18 @@ public class OrderEntity {
 	public void setUpdate_time(Timestamp update_time) {
 		this.update_time = update_time;
 	}
+
+	public String getStatus() {
+		return status;
+	}
+
+	public void setStatus(String status) {
+		this.status = status;
+	}
+
+	public String getAddress() {
+		return address;
+	}
+
 
 }

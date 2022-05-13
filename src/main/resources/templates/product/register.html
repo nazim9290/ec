@@ -16,17 +16,23 @@
 					<h1 class="text-center mb-4">商品登録画面</h1>
 
 					<div class="card" style="border-radius: 15px;">
-						<div class="card-body">
+
+						<form class="card-body" th:action="@{/product/add}" method="post"
+							th:object="${product}" enctype="multipart/form-data">
+
+							<input type="hidden" name="product_id" th:field="*{product_id}">
 
 							<div class="row align-items-center pt-4 pb-3">
 								<div class="col-md-3 ps-5">
+
 
 									<h6 class="mb-0">商品名</h6>
 
 								</div>
 								<div class="col-md-9 pe-5">
 
-									<input type="text" class="form-control form-control-lg" />
+									<input type="text" th:field="*{product_name}"
+										name="product_name" class="form-control form-control-lg" />
 
 								</div>
 							</div>
@@ -41,8 +47,9 @@
 								</div>
 								<div class="col-md-9 pe-5">
 
-									<input type="email" class="form-control form-control-lg"
-										placeholder="" />
+									<input type="text" th:field="*{product_description}"
+										name="product_description"
+										class="form-control form-control-lg" placeholder="" />
 
 								</div>
 							</div>
@@ -57,7 +64,8 @@
 								</div>
 								<div class="col-md-9 pe-5">
 
-									<input type="text" class="form-control form-control-lg" />
+									<input type="number" th:field="*{price}" name="price"
+										class="form-control form-control-lg" />
 
 								</div>
 							</div>
@@ -71,7 +79,8 @@
 								</div>
 								<div class="col-md-9 pe-5">
 
-									<input type="password" class="form-control form-control-lg" />
+									<input type="number" th:field="*{stock}" name="stock"
+										class="form-control form-control-lg" />
 
 								</div>
 							</div>
@@ -84,12 +93,18 @@
 									<h6 class="mb-0">写真</h6>
 
 								</div>
-								<div class="col-md-9 pe-5">
+								<div class="col-md-4 pe-5">
 
-									<input class="form-control form-control-lg" id="formFileLg"
-										type="file" />
-
+									<input type="file" class="custom-file-input"
+										name="productImage" accept="image/jpeg, image/png, image/jpg"
+										id="productImage" />
 								</div>
+								<div class="col-md-5 pe-5">
+									<img src="#" id="imgPreview" height="100px" width="100px"
+										th:src="@{${'/productImages/' + product.image}}" alt=" ">
+								</div>
+								<input type="hidden" name="imgName" th:value="${product.image}">
+
 							</div>
 
 							<hr class="mx-n3">
@@ -101,8 +116,13 @@
 								</div>
 								<div class="col-md-9 pe-5">
 
-									<input type="text" class="form-control form-control-lg"
-										placeholder="" />
+									<select th:field="*{category_id}" name="category_name"
+										class="form-select" aria-label="Default select example">
+
+										<option th:each="category : ${categoryList}"
+											th:value="${category.category_id}"
+											th:text="${category.category_name}">
+									</select>
 
 								</div>
 							</div>
@@ -116,8 +136,11 @@
 								</div>
 								<div class="col-md-9 pe-5">
 
-									<input type="text" class="form-control form-control-lg"
-										placeholder="" />
+									<select th:field="*{maker_id}" name="maker_name"
+										class="form-select" aria-label="Default select example">
+										<option th:each="maker : ${makerList}"
+											th:value="${maker.maker_id}" th:text="${maker.maker_name}">
+									</select>
 
 								</div>
 							</div>
@@ -128,7 +151,7 @@
 								<button type="submit" class="btn btn-primary btn-lg">登録</button>
 							</div>
 
-						</div>
+						</form>
 					</div>
 
 				</div>

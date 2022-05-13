@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+
+
+
+<html lang="ja" xmlns:th="http://www.thymeleaf.org"
+	th:replace="base::layout(~{::section})">
+<head>
+<meta charset="UTF-8" />
+<title th:text="${title}"></title>
+</head>
+<body>
+
+	<section>
+		<div class="container-fluid">
+
+			<a th:href="@{/product/register}" style="margin: 20px 0"
+				class="btn btn-primary">商品登録</a>
+			<table class="table">
+				<thead class="thead-light">
+					<tr>
+						<th scope="col">SN</th>
+						<th scope="col">商品名前</th>
+						<th scope="col">価格</th>
+						<th scope="col">カテゴリ</th>
+						<th scope="col">メーカー</th>
+						<th scope="col">写真</th>
+						<th scope="col">削除</th>
+						<th scope="col">更新</th>
+					</tr>
+				</thead>
+				<tbody>
+
+					<tr th:each="product, iStat : ${products}">
+						<th scope="row" th:text="${iStat.index + 1}"></th>
+						
+						<td th:text="${product.product_name}"></td>
+						
+						<td th:text="${product.price}"></td>
+						
+						<td th:text="${product.category_name}"></td>
+						
+						<td th:text="${product.maker_name}"></td>
+						
+						<td><img src="" height="100px" width="100px"
+							th:src="@{${'/productImages/' + product.image}}"></td>
+
+						<td><a href=""
+							th:href="@{/admin/products/delete/{id}(id=${product.product_id})}"
+							class="btn btn-danger">削除</a></td>
+						<td><a href=""
+							th:href="@{/admin/products/update/{id}(id=${product.product_id})}"
+							class="btn btn-warning">更新</a></td>
+
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</section>
+
+
+
+
+</body>
+</html>

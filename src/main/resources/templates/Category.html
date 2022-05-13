@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+
+<ul th:insert="fragment :: category" class="dropdown-menu" aria-labelledby="navbarDropdown">
+							<li><a class="dropdown-item" href="#"
+								th:each="category : ${categoryList}"
+								th:text="${category.getCategory_name}"></a></li>
+
+						</ul>
+
+</body>
+</html>

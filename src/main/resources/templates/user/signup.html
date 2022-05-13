@@ -9,7 +9,7 @@
 
 
 		<section class="my-5">
-			<div class="container h-100">
+			<form class="container h-100" method="post" action="/user/insert" th:object="${userForm}">
 				<div
 					class="row d-flex justify-content-center align-items-center h-100">
 					<div class="col-xl-9">
@@ -27,7 +27,7 @@
 									</div>
 									<div class="col-md-9 pe-5">
 
-										<input type="text" class="form-control form-control-lg" />
+										<input type="text" th:field="*{user_name}" class="form-control form-control-lg" />
 
 									</div>
 								</div>
@@ -42,7 +42,7 @@
 									</div>
 									<div class="col-md-9 pe-5">
 
-										<input type="email" class="form-control form-control-lg"
+										<input type="email" th:field="*{user_email}" class="form-control form-control-lg"
 											placeholder="example@example.com" />
 
 									</div>
@@ -58,7 +58,7 @@
 									</div>
 									<div class="col-md-9 pe-5">
 
-										<input type="password" class="form-control form-control-lg" />
+										<input type="password" th:field="*{user_password}" class="form-control form-control-lg" />
 
 									</div>
 								</div>
@@ -73,7 +73,7 @@
 									</div>
 									<div class="col-md-9 pe-5">
 
-										<input class="form-control form-control-lg" id="formFileLg"
+										<input th:field="*{user_image}" class="form-control form-control-lg" id="formFileLg"
 											type="file" />
 
 									</div>
@@ -88,7 +88,7 @@
 									</div>
 									<div class="col-md-9 pe-5">
 
-										<input type="text" class="form-control form-control-lg"
+										<input type="text" th:field="*{mobail}" class="form-control form-control-lg"
 											placeholder="" />
 
 									</div>
@@ -103,7 +103,7 @@
 									</div>
 									<div class="col-md-9 pe-5">
 
-										<textarea class="form-control" rows="3" placeholder=""></textarea>
+										<textarea class="form-control" th:field="*{address}" rows="3" placeholder=""></textarea>
 
 									</div>
 								</div>
@@ -111,7 +111,7 @@
 								<hr class="mx-n3">
 
 								<div class="px-5 py-4">
-									<button type="submit" class="btn btn-primary btn-lg">登録、</button>
+									<button type="submit" class="btn btn-primary btn-lg">登録</button>
 								</div>
 
 							</div>
@@ -119,7 +119,7 @@
 
 					</div>
 				</div>
-			</div>
+			</form>
 		</section>
 	
 </body>

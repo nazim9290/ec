@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+
+
+
+<html lang="ja" xmlns:th="http://www.thymeleaf.org"
+	th:replace="base::layout(~{::section})">
+<head>
+<meta charset="UTF-8" />
+<title th:text="${title}"></title>
+</head>
+<body>
+
+	<section style="height:90vh">
+		<div class="jumbotron text-center">
+    <h1 class="display-4">Welcome back, Admin</h1>
+    <p>Easily manage your data from this <mark>Admin Page</mark></p>
+</div>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-3 pt-3" >
+            <div class="card" style="background-color:white;">
+                <div class="card-body">
+                    <h4 class="card-title">ユーザ</h4>
+                    <p class="card-text">ユーザ管理</p>
+                    <a href="#" th:href="@{/admin/users}" class="card-link btn btn-primary">管理</a>
+
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-3 pt-3" >
+            <div class="card" style="background-color:white;">
+                <div class="card-body">
+                    <h4 class="card-title">カテゴリ</h4>
+                    <p class="card-text">カテゴリ管理</p>
+                    <a href="#" th:href="@{/admin/categories}" class="card-link btn btn-primary">管理</a>
+
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-3 pt-3" >
+            <div class="card" style="background-color:white;">
+                <div class="card-body">
+                    <h4 class="card-title">メーカー</h4>
+                    <p class="card-text">メーカー管理</p>
+                    <a href="#" th:href="@{/admin/maker}" class="card-link btn btn-primary">管理</a>
+
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-3 pt-3" >
+            <div class="card" style="background-color:white;">
+                <div class="card-body">
+                    <h4 class="card-title">商品</h4>
+                    <p class="card-text">商品管理</p>
+                    <a href="#" th:href="@{/admin/products}" class="card-link btn btn-primary">管理</a>
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+	</section>
+	
+	
+	
+
+</body>
+</html>
