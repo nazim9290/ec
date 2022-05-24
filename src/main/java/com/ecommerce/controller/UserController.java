@@ -49,10 +49,12 @@ public class UserController {
 			Model model) {
 
 		UserEntity userEntity = userService.getUserByEmail(loginDao.getUser_email());
-
+		System.out.println(loginDao.getUser_email());
+		System.out.println(loginDao.getUser_password());
 
 		// loginパスワードのチェック処理
 		if ((userEntity != null) && loginDao.getUser_password().equals(userEntity.getUser_password())) {
+			System.out.println(userEntity.getUser_password());
 			session.setAttribute("loginUser", userEntity);
 			Object cartCount = cartService.cartCount(userEntity.getUser_id());
 			session.setAttribute("cartCount",cartCount );
@@ -82,10 +84,11 @@ public class UserController {
 	}
 
 	@PostMapping("/insert")
-	public String userRegister(@ModelAttribute UserForm userForm) {
+	public String userRegister(@ModelAttribute("userForm") UserForm userForm) {
+		System.out.println("hello");
 		userService.insertUser(userForm);
 
-		return "redirect:/";
+		return "redirect:/product";
 	}
 
 }
