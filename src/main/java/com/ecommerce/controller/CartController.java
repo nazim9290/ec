@@ -32,12 +32,20 @@ public class CartController {
 	public String cartGet(Model model) {
 
 		UserEntity loginUser = (UserEntity) request.getSession(true).getAttribute("loginUser");
-			List<CartDTO> cartItem = cartService.getcart(loginUser.getUser_id());
-			model.addAttribute("cart", cartItem);
-			model.addAttribute("total",
-					cartService.getcart(loginUser.getUser_id()).stream().mapToDouble(CartDTO::getTotal).sum());
+		List<CartDTO> cartItem = cartService.getcart(loginUser.getUser_id());
+			System.out.println(cartItem.size());
+			
+			if (cartItem.size() > 0) {
+				model.addAttribute("cart", cartItem);
+				model.addAttribute("total",
+						cartService.getcart(loginUser.getUser_id()).stream().mapToDouble(CartDTO::getTotal).sum());
 
-			return "user/updateCartPage";
+				return "user/updateCartPage";
+				
+			} else {
+				return "redirect:/product";
+			}
+
 	}// page cart
 
 
