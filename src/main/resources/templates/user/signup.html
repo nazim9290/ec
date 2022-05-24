@@ -9,7 +9,7 @@
 
 
 		<section class="my-5">
-			<form class="container h-100" method="POST" action="/user/insert" th:object="${userForm}">
+			<form class="container h-100" method="POST" th:action="@{/user/insert}" th:object="${userForm}">
 				<div
 					class="row d-flex justify-content-center align-items-center h-100">
 					<div class="col-xl-9">

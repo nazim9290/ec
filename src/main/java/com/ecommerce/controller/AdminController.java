@@ -116,7 +116,7 @@ public class AdminController {
 	@PostMapping("/makers/add")
 	public String postmakerAdd(@ModelAttribute("maker") MakerEntity makerEntity) {
 		makerService.savemaker(makerEntity);
-		return "redirect:/admin/makers";
+		return "redirect:/admin/maker";
 	}// form add new maker > do add
 
 	@GetMapping("/makers/delete/{id}")
